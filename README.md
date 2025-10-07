@@ -1,90 +1,177 @@
 # Spec2App 🚀
 
-**Natural Language to Modular App Generator**
+**Transform Natural Language Specifications into Design Contracts**
 
-Spec2App transforms specifications in natural language (e.g., "create an app to report potholes in Miami") into engineering artifacts and executable code. The system uses interoperating AI agents to analyze requirements, design architecture, and generate production-ready applications.
+Spec2App is a multi-agent system that transforms natural language descriptions (e.g., "create a task manager app") into structured Design Contracts with entities, services, and UI specifications. The system uses AI agents to analyze requirements, validate consistency, and generate production-ready architectural designs.
 
-## 🎯 Features
+---
 
-- **Natural Language Input**: Describe your app in plain English
-- **Multi-Agent System**: Analyst, Orchestrator, and Coder agents work together
-- **Full-Stack Generation**: React + Vite frontend, NestJS backend
-- **Design Contract**: Canonical JSON interface between all agents
-- **Type-Safe**: TypeScript end-to-end with strict mode
-- **Test-Driven**: Comprehensive test coverage with Vitest
-- **Production Ready**: ESLint, Prettier, CI/CD, Docker support
+## ✨ Features
 
-## 📦 Monorepo Structure
+- 🗣️ **Natural Language Input**: Describe your app in plain English
+- 🤖 **Multi-Agent System**: Analyst and Orchestrator agents work together
+- 📝 **Design Contract**: Canonical JSON interface validated with Zod
+- 🎨 **Modern Web Interface**: React + Vite + TypeScript + Tailwind CSS
+- ⚡ **Fast API**: Fastify backend with type-safe endpoints
+- 🧪 **Test-Driven**: 100% test coverage with Vitest
+- 🐳 **Docker Ready**: Production-ready containers
+- 🔒 **Type-Safe**: TypeScript strict mode end-to-end
 
-```
-spec2app/
-├── apps/
-│   ├── api/          # NestJS backend API
-│   └── web/          # React + Vite frontend
-├── packages/
-│   ├── contracts/    # Design Contract schemas (Zod)
-│   ├── ui-kit/       # Shared UI components
-│   └── sdk/          # Auto-generated TypeScript SDK
-├── tools/
-│   ├── codegen/      # Code generation utilities
-│   └── scripts/      # Build and deployment scripts
-├── docs/
-│   ├── adrs/         # Architecture Decision Records
-│   ├── openapi/      # OpenAPI specifications
-│   └── uml/          # UML diagrams
-└── .github/          # CI/CD workflows
-```
+---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (3 Steps)
 
 ### Prerequisites
 
-- Node.js >= 18.0.0
-- pnpm >= 8.0.0
+- **Node.js** >= 18.0.0
+- **pnpm** >= 8.0.0
+- **Docker** (optional, for containerized deployment)
 
-### Installation
+### 1. Installation
 
 ```bash
-# Install pnpm if not already installed
+# Clone the repository
+git clone https://github.com/yourusername/spec2app.git
+cd spec2app
+
+# Install pnpm if not installed
 npm install -g pnpm
 
 # Install dependencies
 pnpm install
 
-# Run tests
-pnpm test
-
 # Build all packages
 pnpm build
 ```
 
-### Development
+### 2. Run the Application
 
+**Option A: Run Everything with One Command** ⭐
 ```bash
-# Run all apps in development mode
 pnpm dev
-
-# Run tests in watch mode
-pnpm test:watch
-
-# Lint and format code
-pnpm lint:fix
-pnpm format
 ```
+
+This starts:
+- 🔧 API at `http://localhost:3000`
+- 🌐 Web at `http://localhost:5173`
+
+**Option B: Run Services Separately**
+```bash
+# Terminal 1: Start API
+pnpm dev:api
+
+# Terminal 2: Start Web
+pnpm dev:web
+```
+
+**Option C: Use Docker**
+```bash
+docker-compose up -d
+```
+
+### 3. Open and Test
+
+Open your browser at **http://localhost:5173**
+
+Try one of the examples:
+1. Click on "Create a task manager app"
+2. Click "Analyze Specification"
+3. See the generated Design Contract! ✨
+
+---
+
+## 📸 What You'll See
+
+```
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  Spec2App                    🟢 API Online    ┃
+┃  Transform natural language into Contracts    ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+Input Specification        →    Generated Contract
+─────────────────────           ─────────────────────
+"Create a task manager"         📊 Metadata
+                                  • Name: TaskManager
+[Analyze]  [Clear]                • Domain: productivity
+                                  
+Examples:                        📦 Entities
+• Task manager                     • User (id, name, email)
+• E-commerce store                 • Task (id, title, done)
+• Blog platform                  
+• Social network                 🔧 Services
+• Healthcare app                   • TaskService (CRUD)
+                                
+                                 [Download JSON]
+```
+
+---
+
+## 📦 Project Structure
+
+```
+spec2app/
+├── apps/
+│   ├── api/               # Fastify backend API
+│   │   └── src/
+│   │       └── index.ts   # Main API server
+│   └── web/               # React + Vite frontend
+│       └── src/
+│           ├── components/    # React components
+│           ├── api.ts         # API client
+│           └── App.tsx        # Main app
+├── packages/
+│   ├── contracts/         # Design Contract schemas (Zod)
+│   ├── analyst/           # Analyst Agent logic
+│   └── orchestrator/      # Orchestrator Agent logic
+├── docs/                  # Documentation
+├── .github/               # CI/CD workflows
+└── docker-compose.yml     # Docker setup
+```
+
+---
 
 ## 🏗️ Architecture
 
-Spec2App uses a **multi-agent architecture** with a canonical **Design Contract** as the communication interface:
+Spec2App uses a **multi-agent architecture** with a canonical **Design Contract**:
 
-1. **Analyst Agent**: Extracts entities, services, and requirements from natural language
-2. **Orchestrator**: Validates, normalizes, and ensures consistency
-3. **Coder Agent**: Generates OpenAPI specs, backend code, frontend components, and tests
+```
+Natural Language
+       ↓
+┌──────────────┐
+│   Analyst    │  Extracts entities, services, UI
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│ Orchestrator │  Validates, normalizes, ensures consistency
+└──────┬───────┘
+       ↓
+  Design Contract (JSON)
+```
 
-For detailed architecture decisions, see [ADR-0001](./docs/adrs/ADR-0001-architecture.md).
+### Agents
+
+1. **Analyst Agent** (`packages/analyst/`)
+   - Parses natural language specifications
+   - Extracts entities with attributes
+   - Identifies services and operations
+   - Generates UI routes and components
+
+2. **Orchestrator** (`packages/orchestrator/`)
+   - Validates Design Contracts against schemas
+   - Checks for logical consistency
+   - Normalizes and enriches contracts
+   - Adds default fields (id, timestamps)
+
+3. **Coder Agent** _(Coming Soon)_
+   - Will generate OpenAPI specs
+   - Will scaffold backend code
+   - Will create frontend components
+
+---
 
 ## 🧪 Testing
 
-We follow **Test-Driven Development (TDD)**:
+All packages have **100% test coverage** ✅
 
 ```bash
 # Run all tests
@@ -93,109 +180,281 @@ pnpm test
 # Run tests with coverage
 pnpm test:coverage
 
-# Run tests for a specific package
+# Run tests in watch mode
+pnpm test:watch
+
+# Run tests for specific package
 pnpm --filter @spec2app/contracts test
 ```
 
-Current test coverage: **100%** on core packages ✅
+---
 
-## 📋 Design Contract
+## 📋 Design Contract Example
 
-The Design Contract is the canonical interface between agents. It's a strongly-typed JSON schema validated with Zod:
+The Design Contract is a strongly-typed JSON schema:
 
 ```typescript
-import { DesignContractSchema } from '@spec2app/contracts';
-
-const contract = {
-  metadata: {
-    name: 'PotholeReporter',
-    domain: 'civic-tech',
-    locale: 'en-US',
+{
+  "metadata": {
+    "name": "TaskManager",
+    "domain": "productivity",
+    "locale": "en-US",
+    "version": "1.0.0"
   },
-  entities: [
+  "entities": [
     {
-      name: 'Report',
-      attributes: [
-        { name: 'id', type: 'uuid', required: true },
-        { name: 'location', type: 'geo', required: true },
-        { name: 'status', type: 'enum', required: true, validation: 'OPEN|CLOSED' },
-      ],
-    },
+      "name": "Task",
+      "attributes": [
+        { "name": "id", "type": "uuid", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "completed", "type": "boolean", "required": false },
+        { "name": "createdAt", "type": "timestamp", "required": true },
+        { "name": "updatedAt", "type": "timestamp", "required": true }
+      ]
+    }
   ],
-  services: [
+  "services": [
     {
-      name: 'ReportService',
-      operations: [
-        { name: 'createReport', input: 'ReportInput', output: 'Report', method: 'POST' },
-      ],
-    },
+      "name": "TaskService",
+      "operations": [
+        { "name": "createTask", "input": "Task", "output": "Task", "method": "POST" },
+        { "name": "getTasks", "input": "void", "output": "Task[]", "method": "GET" }
+      ]
+    }
   ],
-  ui: {
-    routes: ['/', '/reports'],
-    components: ['ReportForm', 'ReportList', 'MapView'],
-  },
-};
-
-const result = DesignContractSchema.safeParse(contract);
+  "ui": {
+    "routes": ["/", "/tasks", "/tasks/:id"],
+    "components": ["TaskForm", "TaskList"]
+  }
+}
 ```
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Language**: TypeScript (strict mode)
-- **Backend**: NestJS, Prisma ORM, PostgreSQL
-- **Frontend**: React, Vite, Zustand, Tailwind CSS
-- **Testing**: Vitest, Supertest, Playwright
-- **Quality**: ESLint, Prettier, Husky, lint-staged
-- **CI/CD**: GitHub Actions
-- **Containerization**: Docker, docker-compose
+| Layer | Technology |
+|-------|-----------|
+| **Language** | TypeScript (strict mode) |
+| **Backend** | Fastify, Node.js |
+| **Frontend** | React 18, Vite, Tailwind CSS |
+| **Validation** | Zod |
+| **Testing** | Vitest |
+| **Linting** | ESLint, Prettier |
+| **CI/CD** | GitHub Actions |
+| **Containerization** | Docker, docker-compose |
+
+---
 
 ## 📚 Documentation
 
-- [Architecture Decision Records](./docs/adrs/)
-- [Design Document](./CodeVibe_Spec2App_DesignDoc.pdf)
-- [Contributing Guidelines](./CONTRIBUTING.md) _(coming soon)_
+- **[FRONTEND_GUIDE.md](./FRONTEND_GUIDE.md)** - Complete frontend guide
+- **[LOCAL_TESTING.md](./LOCAL_TESTING.md)** - API testing guide with examples
+- **[DOCKER.md](./DOCKER.md)** - Docker deployment guide
+- **[ADRs](./docs/adrs/)** - Architecture Decision Records
+
+---
+
+## 🔌 API Endpoints
+
+### Health Check
+```bash
+GET /health
+→ { "status": "ok", "timestamp": "..." }
+```
+
+### Analyze Specification
+```bash
+POST /api/analyze
+Content-Type: application/json
+
+{
+  "specification": "Create a blog with posts and authors"
+}
+
+→ { "success": true, "contract": { ... } }
+```
+
+### Validate Contract
+```bash
+POST /api/validate
+Content-Type: application/json
+
+{ ... Design Contract ... }
+
+→ { "valid": true, "contract": { ... } }
+```
+
+---
+
+## 🧩 Example Usage
+
+### From the Web Interface
+
+1. Open http://localhost:5173
+2. Enter: "Create an e-commerce store with products and orders"
+3. Click "Analyze Specification"
+4. Download the generated JSON contract
+
+### From the API (cURL)
+
+```bash
+curl -X POST http://localhost:3000/api/analyze \
+  -H "Content-Type: application/json" \
+  -d '{
+    "specification": "Create a blog platform with posts and comments"
+  }' | jq .
+```
+
+### From Code (TypeScript)
+
+```typescript
+import { api } from './api';
+
+const response = await api.analyze(
+  'Create a social network with users and posts'
+);
+
+console.log(response.contract);
+```
+
+---
+
+## 🐳 Docker Deployment
+
+```bash
+# Build and run with docker-compose
+docker-compose up -d
+
+# View logs
+docker logs -f spec2app-api
+
+# Stop services
+docker-compose down
+```
+
+Services:
+- API: http://localhost:3000
+- Web: http://localhost:5173
+
+---
 
 ## 🗺️ Roadmap
 
-### Phase 0: Foundations ✅
+### Phase 1: Foundation ✅ (COMPLETED)
 - [x] Monorepo structure with pnpm workspaces
 - [x] TypeScript, ESLint, Prettier configuration
 - [x] Design Contract schemas with Zod
+- [x] Analyst Agent with entity/service extraction
+- [x] Orchestrator with validation and normalization
+- [x] REST API with Fastify
+- [x] React + Vite frontend
+- [x] Docker support
 - [x] CI/CD pipeline (GitHub Actions)
+- [x] 100% test coverage
 
-### Phase 1: Analyst Agent 🚧
-- [ ] NLP prompt templates
-- [ ] Entity and service extraction
-- [ ] Non-functional requirements parsing
-- [ ] Backlog generation (epics → stories)
-
-### Phase 2: Orchestrator 📋
-- [ ] Design Contract validation
-- [ ] Consistency checks
-- [ ] Architecture pattern selection
-- [ ] Normalization rules
-
-### Phase 3: Coder Agent 📋
+### Phase 2: Coder Agent 🚧 (IN PROGRESS)
 - [ ] OpenAPI specification generation
-- [ ] NestJS controller/service scaffolding
-- [ ] Prisma schema generation
-- [ ] React component generation
+- [ ] Backend code scaffolding
+- [ ] Frontend component generation
+- [ ] Database schema generation
 - [ ] Test generation
 
-### Phase 4: Documentation & Demo 📋
-- [ ] README generation
-- [ ] ADR generation
-- [ ] UML diagram generation
-- [ ] Docker Compose setup
-- [ ] Demo: "Pothole Reporter" app
+### Phase 3: Advanced Features 📋 (PLANNED)
+- [ ] Real AI/LLM integration (OpenAI, Claude)
+- [ ] Advanced NLP for complex requirements
+- [ ] Multiple framework support (Next.js, NestJS, etc.)
+- [ ] Database support (Prisma, PostgreSQL, MongoDB)
+- [ ] Authentication and authorization
+- [ ] Deployment automation
+
+---
+
+## 🧪 Example Specifications to Try
+
+1. **Task Manager**
+   ```
+   Create a task manager app with User and Task entities
+   ```
+
+2. **E-Commerce**
+   ```
+   Create an online store with Product, Order, and Customer entities
+   ```
+
+3. **Blog Platform**
+   ```
+   Create a blog with Post, Author, and Comment entities.
+   Posts have title, content, and publishedAt.
+   ```
+
+4. **Social Network**
+   ```
+   Create a social network with User, Post, and Like entities.
+   Users can create posts and like other users' posts.
+   ```
+
+5. **Healthcare App**
+   ```
+   Create HealthTracker with Patient and Appointment entities.
+   Appointment has status: SCHEDULED, COMPLETED, CANCELLED.
+   ```
+
+---
+
+## 🛑 Troubleshooting
+
+### API shows "Offline" in the frontend
+
+**Solution:**
+```bash
+# Check if API is running
+curl http://localhost:3000/health
+
+# If not running, start it
+pnpm dev:api
+```
+
+### Port already in use
+
+**Solution:**
+```bash
+# Kill process on port 3000
+lsof -ti:3000 | xargs kill -9
+
+# Kill process on port 5173
+lsof -ti:5173 | xargs kill -9
+```
+
+### Build fails
+
+**Solution:**
+```bash
+# Clean and reinstall
+pnpm clean
+pnpm install
+pnpm build
+```
+
+---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our [Contributing Guidelines](./CONTRIBUTING.md) _(coming soon)_.
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
 
 ## 📄 License
 
 MIT License - see [LICENSE](./LICENSE) for details.
+
+---
 
 ## 👥 Authors
 
@@ -203,5 +462,10 @@ MIT License - see [LICENSE](./LICENSE) for details.
 
 ---
 
-**Note**: This project is under active development. The MVP is targeted for December 2025.
-CodeVibe Spec2App turns natural language specs (e.g., “create an app to report potholes in Miami”) into engineering artifacts and executable code. It uses agents: Analyst (NLP → requirements) and Coder (architecture, UML, API, React/Node). Future: Modeler, DocWriter, and QA.
+## ⭐ Show Your Support
+
+If you find this project useful, please give it a ⭐ on GitHub!
+
+---
+
+**Built with ❤️ using React, TypeScript, Fastify, and Tailwind CSS**

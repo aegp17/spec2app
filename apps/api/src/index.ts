@@ -1,10 +1,17 @@
 import Fastify from 'fastify';
+import cors from '@fastify/cors';
 
 import { Analyst } from '@spec2app/analyst';
 import { Orchestrator } from '@spec2app/orchestrator';
 
 const fastify = Fastify({
   logger: true,
+});
+
+// Enable CORS for all routes
+await fastify.register(cors, {
+  origin: true, // Allow all origins in development
+  credentials: true,
 });
 
 const analyst = new Analyst();
