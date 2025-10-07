@@ -53,8 +53,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build packages
-        run: pnpm --filter @spec2app/web build
+      - name: Build all packages (dependencies first)
+        run: |
+          pnpm --filter @spec2app/contracts build
+          pnpm --filter @spec2app/analyst build
+          pnpm --filter @spec2app/orchestrator build
+          pnpm --filter @spec2app/web build
         env:
           VITE_BASE_PATH: /spec2app/
           VITE_API_URL: https://spec2app-api.yourdomain.com
