@@ -3,10 +3,10 @@ import {
   validateDesignContract,
 } from '@spec2app/contracts';
 
-import { EntityExtractor } from './entity-extractor';
-import { MetadataExtractor } from './metadata-extractor';
-import { ServiceExtractor } from './service-extractor';
-import { UIExtractor } from './ui-extractor';
+import { EntityExtractor } from './entity-extractor.js';
+import { MetadataExtractor } from './metadata-extractor.js';
+import { ServiceExtractor } from './service-extractor.js';
+import { UIExtractor } from './ui-extractor.js';
 
 /**
  * Analyst Agent

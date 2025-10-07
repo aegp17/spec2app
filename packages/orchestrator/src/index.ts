@@ -5,8 +5,8 @@
  * and normalizes Design Contracts.
  */
 
-export { Orchestrator } from './orchestrator';
-export { Validator } from './validator';
-export { ConsistencyChecker } from './consistency-checker';
-export { Normalizer } from './normalizer';
+export { Orchestrator } from './orchestrator.js';
+export { Validator } from './validator.js';
+export { ConsistencyChecker } from './consistency-checker.js';
+export { Normalizer } from './normalizer.js';
 

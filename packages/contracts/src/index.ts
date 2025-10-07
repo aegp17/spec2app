@@ -5,8 +5,8 @@
  * This package provides the canonical interface between all agents.
  */
 
-export * from './metadata';
-export * from './entity';
-export * from './service';
-export * from './ui';
-export * from './design-contract';
+export * from './metadata.js';
+export * from './entity.js';
+export * from './service.js';
+export * from './ui.js';
+export * from './design-contract.js';

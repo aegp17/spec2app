@@ -5,10 +5,10 @@
  * into structured Design Contracts.
  */
 
-export { Analyst } from './analyst';
-export { EntityExtractor } from './entity-extractor';
-export { ServiceExtractor } from './service-extractor';
-export { UIExtractor } from './ui-extractor';
-export { MetadataExtractor } from './metadata-extractor';
-export type { Entity, Service, UI, Metadata } from './types';
+export { Analyst } from './analyst.js';
+export { EntityExtractor } from './entity-extractor.js';
+export { ServiceExtractor } from './service-extractor.js';
+export { UIExtractor } from './ui-extractor.js';
+export { MetadataExtractor } from './metadata-extractor.js';
+export type { Entity, Service, UI, Metadata } from './types.js';
 

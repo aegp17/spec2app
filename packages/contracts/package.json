@@ -2,6 +2,7 @@
   "name": "@spec2app/contracts",
   "version": "0.1.0",
   "description": "Design Contract schemas for Spec2App",
+  "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {

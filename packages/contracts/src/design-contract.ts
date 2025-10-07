@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
-import { EntitySchema } from './entity';
-import { MetadataSchema } from './metadata';
-import { ServiceSchema } from './service';
-import { UISchema } from './ui';
+import { EntitySchema } from './entity.js';
+import { MetadataSchema } from './metadata.js';
+import { ServiceSchema } from './service.js';
+import { UISchema } from './ui.js';
 
 /**
  * Design Contract Schema

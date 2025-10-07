@@ -1,8 +1,8 @@
 import type { DesignContract } from '@spec2app/contracts';
 
-import { ConsistencyChecker } from './consistency-checker';
-import { Normalizer } from './normalizer';
-import { Validator } from './validator';
+import { ConsistencyChecker } from './consistency-checker.js';
+import { Normalizer } from './normalizer.js';
+import { Validator } from './validator.js';
 
 /**
  * Orchestrator
