@@ -1,28 +1,38 @@
-version: '3.8'
-
 services:
   api:
+    container_name: spec2app-api
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: spec2app-api
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
-      - HOST=0.0.0.0
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (r) => { process.exit(r.statusCode === 200 ? 0 : 1); })"]
-      interval: 30s
-      timeout: 3s
-      retries: 3
-      start_period: 5s
     networks:
       - spec2app-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1); })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  web:
+    container_name: spec2app-web
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    environment:
+      - VITE_API_URL=http://localhost:3000
+    networks:
+      - spec2app-network
+    depends_on:
+      api:
+        condition: service_healthy
 
 networks:
   spec2app-network:
     driver: bridge
-

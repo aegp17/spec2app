@@ -11,6 +11,8 @@
   },
   "scripts": {
     "dev": "pnpm --parallel --stream run dev",
+    "dev:api": "pnpm --filter @spec2app/api dev",
+    "dev:web": "pnpm --filter @spec2app/web dev",
     "build": "pnpm --recursive run build",
     "test": "vitest run",
     "test:watch": "vitest",
